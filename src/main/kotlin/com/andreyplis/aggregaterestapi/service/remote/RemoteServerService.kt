@@ -5,11 +5,16 @@ import com.andreyplis.aggregaterestapi.model.Function
 import com.andreyplis.aggregaterestapi.model.Variable
 import com.andreyplis.aggregaterestapi.service.ServerService
 import com.tibbo.aggregate.common.datatable.encoding.JsonEncodingHelper
+import com.tibbo.aggregate.common.protocol.RemoteContextManager
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 internal class RemoteServerService(val remoteAggreGate: RemoteAggreGate) : ServerService {
+    override fun getContextManager(): RemoteContextManager {
+        return remoteAggreGate.contextManager
+    }
+
     override fun getContextVariable(path: String, id: String): Optional<String> {
         val context = remoteAggreGate.contextManager.get(path) ?: return Optional.empty()
 
