@@ -13,11 +13,11 @@ import org.springframework.stereotype.Controller
 @Controller
 class GreetingController(val serverService: ServerService, val template: SimpMessagingTemplate) {
 
-    @MessageMapping("/hello")
+    @MessageMapping("/subscribe")
     fun greeting(message: String) {
         val ab: DefaultContextEventListener<CallerController<CallerData>> = object : DefaultContextEventListener<CallerController<CallerData>>() {
             override fun handle(p0: Event?) {
-                template.convertAndSend("/topic/greetings", "Hello")
+                template.convertAndSend("/topic/event", "Hello")
             }
         }
         serverService.getContextManager().get("users.admin.models.test").addEventListener("test", ab)
