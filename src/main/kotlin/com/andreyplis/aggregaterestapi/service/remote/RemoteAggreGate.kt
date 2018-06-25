@@ -18,7 +18,7 @@ class RemoteAggreGate {
         Log.start()
 
         // Provide correct server address/port and name/password of server user to log in as
-        val rls = RemoteServer("localhost", RemoteServer.DEFAULT_PORT, "admin", "admin")
+        val rls = RemoteServer("localhost", RemoteServer.DEFAULT_PORT, "admin", "admin123")
 
         // Creating server controller
         rlc = RemoteServerController(rls, true)

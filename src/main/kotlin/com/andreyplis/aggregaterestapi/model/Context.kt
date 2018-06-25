@@ -6,5 +6,6 @@ data class Context(
         val description: String,
         val children: List<Context> = ArrayList(),
         val variables: List<Variable> = ArrayList(),
-        val functions: List<Function> = ArrayList()
+        val functions: List<Function> = ArrayList(),
+        val events: List<Event> = ArrayList()
 )

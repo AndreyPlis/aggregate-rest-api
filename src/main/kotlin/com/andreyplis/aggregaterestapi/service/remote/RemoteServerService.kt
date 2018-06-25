@@ -1,6 +1,7 @@
 package com.andreyplis.aggregaterestapi.service.remote
 
 import com.andreyplis.aggregaterestapi.model.Context
+import com.andreyplis.aggregaterestapi.model.Event
 import com.andreyplis.aggregaterestapi.model.Function
 import com.andreyplis.aggregaterestapi.model.Variable
 import com.andreyplis.aggregaterestapi.service.ServerService
@@ -30,7 +31,8 @@ internal class RemoteServerService(val remoteAggreGate: RemoteAggreGate) : Serve
         val children = context.children.map { context2 -> Context(context2.path, context2.name, context2.description) }.toList()
         val variables = context.variableDefinitions.map { variable -> Variable(variable.name, variable.description) }.toList()
         val functions = context.functionDefinitions.map { function -> Function(function.name, function.description) }.toList()
-        return Optional.of(Context(context.path, context.name, context.description, children, variables, functions))
+        val events = context.eventDefinitions.map { event -> Event(event.name, event.description) }.toList()
+        return Optional.of(Context(context.path, context.name, context.description, children, variables, functions, events))
     }
 
 

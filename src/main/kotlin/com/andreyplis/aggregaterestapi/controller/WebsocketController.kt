@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller
 
 
 @Controller
-class GreetingController(val serverService: ServerService, val template: SimpMessagingTemplate) {
+class WebsocketController(val serverService: ServerService, val template: SimpMessagingTemplate) {
 
     @MessageMapping("/subscribe")
     fun greeting(message: String) {
