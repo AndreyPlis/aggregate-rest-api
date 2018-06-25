@@ -3,13 +3,10 @@ package com.andreyplis.aggregaterestapi.controller
 import com.andreyplis.aggregaterestapi.model.Context
 import com.andreyplis.aggregaterestapi.service.ServerService
 import org.springframework.http.ResponseEntity
-
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:3000"])
 @RequestMapping("/rest/v1")
 class ServerController(val serverService: ServerService) {
 
