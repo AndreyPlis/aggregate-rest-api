@@ -17,10 +17,17 @@ class WebsocketController(val serverService: ServerService, val template: SimpMe
     fun greeting(message: String) {
         val ab: DefaultContextEventListener<CallerController<CallerData>> = object : DefaultContextEventListener<CallerController<CallerData>>() {
             override fun handle(p0: Event?) {
-                template.convertAndSend("/topic/event", "Hello")
+                template.convertAndSend("/topic/event", p0!!.data.rec().toString())
+            }
+        }
+
+        val ab2: DefaultContextEventListener<CallerController<CallerData>> = object : DefaultContextEventListener<CallerController<CallerData>>() {
+            override fun handle(p0: Event?) {
+                template.convertAndSend("/topic/event", "Hello2")
             }
         }
         serverService.getContextManager().get("users.admin.models.test").addEventListener("test", ab)
+        serverService.getContextManager().get("users.admin.models.test").addEventListener("test2", ab)
     }
 
 }
