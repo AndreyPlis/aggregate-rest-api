@@ -1,9 +1,9 @@
 server:
-       port: 8090
+  port: 8090
 
 
 aggregate-server:
-    address: 127.0.0.1
-    port: 6460
-    username: admin
-    password: admin
+  address: 127.0.0.1
+  port: 6460
+  username: admin
+  password: admin
